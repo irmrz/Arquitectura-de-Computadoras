@@ -5,20 +5,20 @@ module signext_tb();
 	logic [31:0] a;
 	logic [63:0] y;
 	
-	logic [31:0] instructions [5:0] = '{32'b_11111000010_010101010_00_00001_00010, // LDUR pos
-													32'b_11111000010_101010100_00_00001_00010, // LDUR neg
-													32'b_11111000000_010101010_00_00001_00010, // STUR pos
-													32'b_11111000000_101010100_00_00001_00010, // STUR neg
-													32'b_10110100000_000000000000001111_00001, // CBZ pos
-													32'b_10110100000_100000000000001111_00001  // CBZ neg
+	logic [31:0] instructions [0:5] = '{32'hf8408041, // LDUR pos
+													32'hf85f8041, // LDUR neg
+													32'hf8008041, // STUR pos
+													32'hf81f8042, // STUR neg
+													32'hb4000021, // CBZ pos
+													32'hb4fff801  // CBZ neg
 													};
 													
-	logic [63:0] yexpected [5:0] = '{64'h0000_0000_0000_0055,
-											   64'hffff_ffff_ffff_ffAA,
-												64'h0000_0000_0000_0055,
-											   64'hffff_ffff_ffff_ffAA,
-												64'h0000_0000_0000_00ff,
-											   64'hffff_ffff_ffff_ffff
+	logic [63:0] yexpected [0:5] = '{64'h0000_0000_0000_0008,
+											   64'hffff_ffff_ffff_fff8,
+												64'h0000_0000_0000_0008,
+											   64'hffff_ffff_ffff_fff8,
+												64'h0000_0000_0000_0001,
+											   64'hffff_ffff_ffff_ffc0
 												};
 	
 	signext dut(a, y);
@@ -27,15 +27,18 @@ module signext_tb();
 		begin 
 			errors = 0;
 		
-		for (int i=0; i < 7; i=i+1) 
+		for (int i=0; i < 6; i=i+1) 
 			begin
 				a = instructions[i];
-				$display("a = %b", a);
 				#10ns
 				if (y != yexpected[i])
-					errors = errors + 1;
-					$display("Error: y = %b (expected = %b)", y, yexpected[i]);
+					begin
+						$display("a = %b", a);
+						errors = errors + 1;
+						$display("Error: y = %b (expected = %b)", y, yexpected[i]);
+					end
 			end
+			$display("Errors= %d", errors);
 		$stop;
 	end
 endmodule

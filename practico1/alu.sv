@@ -12,7 +12,7 @@ module alu
 			4'b0010 : result = a + b;
 			4'b0110 : result = a - b;
 			4'b0111 : result = b;
-			default : result = 16'hffff_ffff_ffff_ffff_;
+			default : result = 64'hffff_ffff_ffff_ffff_;
 		endcase
 		assign zero = (result === 64'd0) ? 1 : 0;
 endmodule

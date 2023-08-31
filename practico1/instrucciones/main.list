@@ -1,0 +1,13 @@
+
+main.elf:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <Exit>:
+   0:	f8408041 	ldur	x1, [x2, #8]
+   4:	f85f8041 	ldur	x1, [x2, #-8]
+   8:	f8008041 	stur	x1, [x2, #8]
+   c:	f81f8042 	stur	x2, [x2, #-8]
+  10:	b4fff801 	cbz	x1, ffffffffffffff10 <Next+0xfffffffffffffef8>
+  14:	b4000021 	cbz	x1, 18 <Next>
