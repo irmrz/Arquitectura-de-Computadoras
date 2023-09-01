@@ -1,0 +1,1 @@
+Despues de modificar el reset, cambiar el tamano de delay antes del dump segun vaya necesitando. Empezar en 1000
