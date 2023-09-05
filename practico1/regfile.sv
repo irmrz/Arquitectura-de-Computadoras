@@ -15,7 +15,7 @@ module regfile (input  logic        clk,
 					registers[i] = i;
 		end
 	
-	always_ff @(posedge clk)
+	always @(posedge clk)
 		begin
 			if ((wa3 != 31) & we3)
 				registers[wa3] = wd3;
