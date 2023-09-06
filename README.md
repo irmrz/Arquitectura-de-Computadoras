@@ -1,5 +1,5 @@
 ## Links Utiles
-- Practico 1[https://famaf.aulavirtual.unc.edu.ar/pluginfile.php/27421/mod_resource/content/0/TP1_%20SV%20y%20procesador%20de%20un%20ciclo.pdf]  
+- [Practico 1](https://famaf.aulavirtual.unc.edu.ar/pluginfile.php/27421/mod_resource/content/0/TP1_%20SV%20y%20procesador%20de%20un%20ciclo.pdf)  
 ---
 
 ## Entrada/Salida del Sistema
@@ -12,6 +12,7 @@
 - En ARM los registros i/o son iguales a los registros de memoria. Se decodifican de la misma manera.
 - Tanto I/O como Flash y RAM comparte un mismo espacio de direccionado.  
 - Que un procesador sea de 64 bits quiere decir que los registros son de 64 bits, no que puede direccionar 2^64. Hoy en dia se estila que sean iguales.  
+- Entre el hardware y el software estan los registros de los perifericos.
 
 ### Intel -> Standard I/O 
 - Todas las instrucciones acceden a memoria.  
@@ -42,3 +43,9 @@
 - Direccion fija: se usaba en arquis pequenas. Una direccion conocida determinada por el fabricante del procesador. En desuso.
 - Direccion vectorizada: Hay muchas, un arreglo de direcciones. Cada una le dice al CPU donde esta. Se agrega una senal INT ACK que va del procesador al modulo io para avisarle que va a ser atendido.
 Cada periferico sabe cual es su vector, el SO debe haber puesto correctamente que numero tiene ese periferico para poder atenderlo.
+
+#### Enmascarables
+El programador puede modificar un bit para que el procesador ignore la repeticion.  
+
+#### No Enmascarables
+No pueden ser ignoradas. Se asocian a eventos de sistema que no dependan de evento io. Se suelen conocer con el nombre de Traps.  
