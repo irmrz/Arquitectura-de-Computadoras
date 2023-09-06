@@ -16,4 +16,4 @@ module execute (input logic 			 AluSrc,
 	adder adder_exec(PC_E, salida_shift_left, PCBranch_E);
 	alu alu_exec(readData1_E, salida_mux, AluControl, aluResult_E, zero_E);
 	assign writeData_E = readData2_E;
-endmodule					 
+endmodule
