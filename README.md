@@ -49,3 +49,11 @@ El programador puede modificar un bit para que el procesador ignore la repeticio
 
 #### No Enmascarables
 No pueden ser ignoradas. Se asocian a eventos de sistema que no dependan de evento io. Se suelen conocer con el nombre de Traps.  
+
+---
+
+### Excepciones
+
+#### Handling Exceptions
+- Guardar el PC de la instruccion que falla o fue interrumpida (ELR: Exception Link Register).  
+- Guardar indicaciones del problema.
