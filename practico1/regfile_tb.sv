@@ -26,11 +26,17 @@ module regfile_tb();
 		/*
 		El error estaba en que no le dejaba tiempo a la simulacion a que lea we3 y wa3
 		*/
-				we3 = 1; #1ns;
-				wa3 = 10; #1ns;
-				wd3 = 64'hffff_ffff_ffff_ffff; #1ns;
-				ra1 = wa3;
-				ra2 = wa3+1;
+			if (counter == 10)
+				begin
+					we3 = 1; 
+					#1ns;
+					wa3 = 10; 
+					#1ns;
+					wd3 = 64'hffff_ffff_ffff_ffff; 
+					#1ns;
+					ra1 = wa3;
+					ra2 = wa3+1;
+				end
 		end
 	
 	always @(negedge clk)

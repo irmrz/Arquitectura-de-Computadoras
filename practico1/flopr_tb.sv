@@ -1,4 +1,3 @@
-`timescale 1ns / 10ps
 module flopr_tb 
 	#(parameter N = 64) ();
 	

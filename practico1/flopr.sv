@@ -1,4 +1,3 @@
-`timescale 1ns / 10ps
 module flopr 
 			  #(parameter N = 64)
 				(input  logic 			  clk,
