@@ -8,8 +8,8 @@ module fetch
 	
 	logic [N-1:0] salida_mux, salida_adder;
 	
-	mux2 mux2_1 (salida_adder, PCBranch_F, PCSrc_F, salida_mux);
-	flopr flipflop (clk, reset, salida_mux, imem_addr_F);
-	adder fetch_adder (imem_addr_F, 64'd4, salida_adder);
+	mux2  #(N) mux2_1 (salida_adder, PCBranch_F, PCSrc_F, salida_mux);
+	flopr #(N) flipflop (clk, reset, salida_mux, imem_addr_F);
+	adder #(N) fetch_adder (imem_addr_F, 64'd4, salida_adder);
 		
 endmodule
