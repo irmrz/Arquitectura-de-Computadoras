@@ -26,4 +26,3 @@ module processor_tb();
 	   #20 $stop;
 	end 
 endmodule
-

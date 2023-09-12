@@ -15,7 +15,7 @@ module maindec_tb ();
 	logic [10:0] testvectors [0:4] = '{11'b111_1100_0010,
 												 11'b111_1100_0000,
 												 11'b101_1010_0???,
-												 11'b1??_0101_?000,
+												 11'b110_0101_1000,
 												 11'b111_1111_1111};
 												 
 	string string_vectors [0:4] = '{"LDUR", "STUR", "CBZ", "R_format", "default"};
