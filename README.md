@@ -29,7 +29,7 @@ Cyclone IV: EP4CE22F17C6
 
 ---
 
-### Operaciones i/o
+## Operaciones i/o
 - **Polling-driven**: entrada salida programada. Consultar repetidamente por codigo a los registros de i/o.  Consulta registros de estado. Se desprecian muchos ciclos de reloj revisando el estado del modulo.  
 - **Interrupt-driven**
 - **DMA**: Direct Memory Access.
@@ -38,26 +38,43 @@ Cyclone IV: EP4CE22F17C6
 
 --- 
 
-### Interrupciones
+## Interrupciones
 -  Es un quiebre en la ejecucion secuencial. Esta controlada por los modulos de entrada salida. Cuando el teclado genera una senal, le envia una interrupcion en el procesador. Este lee status para corroborar que se esta haciendo lo que se espera. Se lee el dato y se la lleva a memoria. En este caso no se desperdician ciclos de reloj (no se consumen ciclos de instruccion pq esto se realiza por hardware)para revisar estados continuamente.  
 - Si hay una interrupcion, corto la secuencialidad y salto a una direccion determinada llamada vector de interrupciones donde esta el codigo con los procedimientos que sirven para atender a esa interrupcion.
 - Este vector se llama ISR (Interrupt address vector).
 
-#### Alojamiento de la ISR
+### Alojamiento de la ISR
 - Direccion fija: se usaba en arquis pequenas. Una direccion conocida determinada por el fabricante del procesador. En desuso.
 - Direccion vectorizada: Hay muchas, un arreglo de direcciones. Cada una le dice al CPU donde esta. Se agrega una senal INT ACK que va del procesador al modulo io para avisarle que va a ser atendido.
 Cada periferico sabe cual es su vector, el SO debe haber puesto correctamente que numero tiene ese periferico para poder atenderlo.
 
-#### Enmascarables
+###Enmascarables
 El programador puede modificar un bit para que el procesador ignore la repeticion.  
 
-#### No Enmascarables
+###No Enmascarables
 No pueden ser ignoradas. Se asocian a eventos de sistema que no dependan de evento io. Se suelen conocer con el nombre de Traps.  
 
 ---
 
-### Excepciones
+## Excepciones
 
-#### Handling Exceptions
+### Handling Exceptions
 - Guardar el PC de la instruccion que falla o fue interrumpida (ELR: Exception Link Register).  
 - Guardar indicaciones del problema.
+
+
+---
+
+## Fordwarding
+*Leer desde pagina 75 en adelante del pdf Chapter_04*.  
+
+ADD X1, X1, X2
+ADD X1, X1, X3
+ADD X4, X1, X2
+- En caso de un doble hazard, se hace el fordwarding desde la salida del execute, no desde el writeback. Ya que se necesita la salida del valor desde el execute.  
+
+- Cuando el LOAD llego a la etapa mem, ahi se deberia fordwardear el dato, pero suponiendo que atras viene una instruccion que hace uso del registro destino que ella esta usando, por ejemplo un STORE, ahi va a tener que hacer un stall.
+
+## Branchs
+
+Con setear las senales del control en 0, deberia ser suficiente. Para hacer un flush a las instrucciones que van a ser descartadas despues de un branch, no es necesario descartar todo. Se puede flushear desde la etapa del MEM del branch hacia atras.
