@@ -21,6 +21,7 @@ module maindec (input logic [10:0] Op,
 	assign ERET = 			11'b000?00010110000;
 	assign MRS = 			11'b11?010000100000; // Tipo S
 	assign InvalidOp =   11'b???00000??00010;
+	assign UnConBranch = 11'b?
 	 	
 	always_comb
 		begin
