@@ -32,14 +32,14 @@ module controller(input logic [10:0] instr,
 							.alucontrol(AluControl));
 								
 	always_comb
-		begin
+	begin
 			if (ExtIRQ)
 				EStatus = 4'b0001;
 			else if (notAnInstr)
 				EStatus = 4'b0010;
 			else 
 				EStatus = 4'b0000;
-		end
+	end
 		
 	assign Exc = ExtIRQ | notAnInstr;
 	assign ExtIAck = ExcAck == 1 && ExtIRQ == 1 ? 1 : 0;

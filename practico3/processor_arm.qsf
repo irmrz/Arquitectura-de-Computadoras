@@ -46,20 +46,17 @@ set_global_assignment -name LAST_QUARTUS_VERSION "20.1.0 Lite Edition"
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/writeback.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/sl2.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/signext.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/regfile.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/processor_tb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/processor_arm.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/mux4.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/mux2.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/memory.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/imem.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/flopr_e.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/flopr.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/fetch.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/execute.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/exception.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/esync.sv
-set_global_assignment -name VHDL_FILE ModulosTP3/dmem.vhd
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/decode.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/datapath.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ModulosTP3/comp_n.sv
@@ -88,8 +85,12 @@ set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH processor_arm_t
 set_global_assignment -name EDA_TEST_BENCH_NAME processor_arm_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id processor_arm_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME processor_arm -section_id processor_arm_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE ModulosTP3/processor_tb.sv -section_id processor_arm_tb
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE imem.sv
+set_global_assignment -name VHDL_FILE dmem.vhd
+set_global_assignment -name SYSTEMVERILOG_FILE processor_arm_tb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE regfile.sv
+set_global_assignment -name EDA_TEST_BENCH_FILE ModulosTP3/processor_tb.sv -section_id processor_arm_tb
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

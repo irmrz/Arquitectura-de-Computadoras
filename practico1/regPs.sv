@@ -9,7 +9,7 @@ module regPs (input logic clk, ShiftIn, load, ShiftEn,
 			shift_reg <= ParallelIn;
 		else if (ShiftEn)
 			shift_reg <= {shift_reg[2:0], ShiftIn};
-		else
+		always_comb
 			begin
 				ShiftOut <= shift_reg[3];
 				RegContent <= shift_reg;
